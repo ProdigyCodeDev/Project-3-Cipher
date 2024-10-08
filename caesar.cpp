@@ -55,10 +55,31 @@ char shiftAlphaCharacter(char c, int n) {
 }
 
 string caesarCipher(string original, int key, bool encrypt) {
-    // TODO: implement
+    string newstr = "";
+    int str_size = original.length();
 
-    // NOTE: return "" to avoid compile error
-    //       remove it after implementing
-    return "";
+    if (encrypt) {
+        for (int x = 0; x < str_size; x++) {
+            char currChar = original.at(x);
+            if (currChar >= 'a' && currChar <= 'z' || currChar >= 'A' && currChar <= 'Z') {
+                newstr += shiftAlphaCharacter(currChar, key);
+            }
+            else {
+                newstr += currChar;
+            }
+        }
+    }
+    else if (!encrypt) {
+        for (int x = 0; x < str_size; x++) {
+            char currChar = original.at(x);
+            if (currChar >= 'a' && currChar <= 'z' || currChar >= 'A' && currChar <= 'Z') {
+                newstr += shiftAlphaCharacter(currChar, (-1 * key));
+            }
+            else {
+                newstr += currChar;
+            }
+        }
+    }
+    return newstr;
 
 }

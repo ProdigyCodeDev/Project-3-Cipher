@@ -11,13 +11,16 @@ void testShiftAlphaCharacter();
 void testremoveNonAlphas();
 void testcharToInt();
 void testremoveDuplicate();
+void testtoUpperCase();
+void testcaesarCipher();
 
 void startTests() {
     testShiftAlphaCharacter();
     testremoveNonAlphas();
     testcharToInt();
     testremoveDuplicate();
-  
+    testtoUpperCase();
+    testcaesarCipher();
     return;
 }
 
@@ -41,4 +44,12 @@ void testcharToInt() {
 
 void testremoveDuplicate() {
     cout << "Expected ABC, actual: " << removeDuplicate("AABBCC") << endl;
+}
+
+void testtoUpperCase() {
+    cout << "Expected ABC, actual: " << toUpperCase("abc") << endl;
+}
+
+void testcaesarCipher() {
+    cout << "Expected        Cuuj cu qj jxu Tyqw qj 11 f.c.     , Actual " << caesarCipher("Meet me at the Diag at 11 p.m.", 42, true) << endl;
 }
