@@ -1,0 +1,25 @@
+string removeDuplicate(string original) {
+    // TODO: implement
+    
+        string result = "";
+        
+        // Iterate through the string
+        for (int i = 0; i < original.length(); i++) {
+            bool isDuplicate = false;
+            
+           
+            for (int j = 0; j < result.length(); j++) {
+                if (original[i] == result[j]) {
+                    isDuplicate = true;
+                                                // break;
+                }
+            }
+            
+           
+            if (!isDuplicate) {
+                result = result + original[i];
+            }
+        }
+        
+        return result;
+    }
