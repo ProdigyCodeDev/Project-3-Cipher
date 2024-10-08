@@ -34,9 +34,10 @@ string toUpperCase(string original){
             
             
         }
-        return original;
+      
         
     }
+    return result;
 }
     
     
