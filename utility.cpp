@@ -13,63 +13,65 @@
 
 #include "utility.h"
 #include <iostream>
-#include <string>
-
 
 //************************************************************************
 // Implement the functions below this line.
 //************************************************************************
 
-string toUpperCase(string original){
+string toUpperCase(string original) {
     // TODO: implement
-    string result = original;
-    
-    
-    
-    
-    
-    for (int i = 1; i <= result.size(); i++){
-        if(result[i] >= 'a' && result[i] <= 'z' ){
-            result[i] = result[i] - 32;
-            
-            
-        }
-      
-        
-    }
-    return result;
-}
-    
-    
-
-
-
-string removeNonAlphas(string original) {
-    // TODO: implement
-    
-   
-    
-    
 
     // NOTE: return "" to avoid compile error
     //       remove it after implementing
     return "";
+}
+
+string removeNonAlphas(string original) {
+    string newString = "";
+    int length = original.length();
+    for (int i = 0; i < length; i++) {
+        char numChar;
+        int charNum = static_cast<int>(original.at(i));
+        if ((charNum >= 65) && (charNum <= 90)) {
+            numChar = static_cast<char>(charNum);
+            newString += numChar;
+        }
+        else {
+            newString += "";
+        }
+    }
+    return newString;
 }
 
 int charToInt(char original) {
-    // TODO: implement
+    char mod = original;
+    int final = mod - 48;
+    return final;
 
-    // NOTE: return 0 to avoid compile error
-    //       remove it after implementing
-    return 0;
 }
 
 string removeDuplicate(string original) {
-    // TODO: implement
+    string result = "";
 
-    // NOTE: return "" to avoid compile error
-    //       remove it after implementing
-    return "";
+    // Iterate through the string
+    for (int i = 0; i < original.length(); i++) {
+        bool isDuplicate = false;
+
+
+        for (int j = 0; j < result.length(); j++) {
+            if (original[i] == result[j]) {
+                isDuplicate = true;
+                // break;
+            }
+        }
+
+
+        if (!isDuplicate) {
+            result = result + original[i];
+        }
+    }
+
+    return result;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
