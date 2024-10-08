@@ -13,17 +13,25 @@
 
 #include "utility.h"
 #include <iostream>
+#include <string>
 
 //************************************************************************
 // Implement the functions below this line.
 //************************************************************************
 
 string toUpperCase(string original) {
-    // TODO: implement
-
-    // NOTE: return "" to avoid compile error
-    //       remove it after implementing
-    return "";
+    string newString = "";
+    int length = original.length();
+    for (int i = 0; i < length; i++) {
+        if ((original.at(i) >= 'a') && ( original.at(i) <= 'z')) {
+            char currChar = original.at(i);
+            newString += toupper(currChar);
+        }
+        else {
+            newString += original.at(i);
+        }
+    }
+    return newString;
 }
 
 string removeNonAlphas(string original) {
