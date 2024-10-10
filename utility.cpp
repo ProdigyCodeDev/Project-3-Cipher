@@ -15,10 +15,6 @@
 #include <iostream>
 #include <string>
 
-//************************************************************************
-// Implement the functions below this line.
-//************************************************************************
-
 string toUpperCase(string original) {
     string newString = "";
     int length = original.length();
@@ -40,7 +36,7 @@ string removeNonAlphas(string original) {
     for (int i = 0; i < length; i++) {
         char numChar;
         int charNum = static_cast<int>(original.at(i));
-        if ((charNum >= 65) && (charNum <= 90)) {
+        if ((charNum >= 65) && (charNum <= 90) || (charNum >= 97) && (charNum <= 122)) {
             numChar = static_cast<char>(charNum);
             newString += numChar;
         }

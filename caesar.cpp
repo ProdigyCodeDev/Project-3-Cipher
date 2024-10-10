@@ -27,32 +27,35 @@
  */
 char shiftAlphaCharacter(char c, int n) {
     int inputChar = static_cast<int>(c);
-    int newChar;
-    if (islower(c)) {
-        if (inputChar + n > 122) {
-            newChar = (inputChar - 97 + n) % 26 + 97;
-            newChar = static_cast<char>(newChar);
-            return newChar;
+    char shiftedChar;
+    while (!(n >= 0 && n < 26)) {
+        if (n < 0) {
+            n += 26;
         }
         else {
-            newChar = inputChar + n;
-            newChar = static_cast<char>(newChar);
-            return newChar;
+            n -= 26;
         }
     }
-    else if (isupper(c)) {
-        if (inputChar + n > 90) {
-            newChar = (inputChar - 65 + n) % 26 + 65;
-            newChar = static_cast<char>(newChar);
-            return newChar;
-        }
-        else {
-            newChar = inputChar + n;
-            newChar = static_cast<char>(newChar);
-            return newChar;
+    
+    if ((inputChar >= 65) && (inputChar <= 90)) {
+        if (c + n > 'Z') {
+            n = c + n - 'Z' - 1;
+            c = 'A';
         }
     }
+
+    else if ((inputChar >= 97) && (inputChar <= 122)) {
+        if (c + n > 'z') {
+            n = c + n - 'z' - 1;
+            c = 'a';
+        }
+    }
+    shiftedChar = c + n;
+    return shiftedChar;
 }
+
+
+
 
 string caesarCipher(string original, int key, bool encrypt) {
     string newstr = "";
