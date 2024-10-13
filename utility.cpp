@@ -15,6 +15,7 @@
 #include <iostream>
 #include <string>
 
+
 string toUpperCase(string original) {
     string newString = "";
     int length = original.length();

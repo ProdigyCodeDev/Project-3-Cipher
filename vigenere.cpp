@@ -16,40 +16,42 @@
 #include "vigenere.h"
 #include <iostream>
 
-//************************************************************************
-// Implement the functions below this line.
-//************************************************************************
+
 
 string vigenereCipher(string original, string keyword, bool encrypt) {
-    string newstr = "";
-    int str_size = original.length();
-    int key_size = keyword.length();
-    int keyIndex = 0;
 
-    for (int x = 0; x < str_size; x++) {
-        char currChar = original.at(x);
-        if (currChar >= 'a' && currChar <= 'z' || currChar >= 'A' && currChar <= 'Z') {
-            char keyChar = keyword.at(keyIndex % key_size);  // Loop over key
-            int keyShift;
+    string finalWord = "";
 
-            // Check if the key character is lowercase or uppercase
-            if (keyChar >= 'a' && keyChar <= 'z') {
-                keyShift = keyChar - 'a';  // Calculate shift for lowercase
+    keyword = toUpperCase(removeNonAlphas(keyword));
+
+    int keyCount = 0;
+    int inputLength = original.length();
+    int keyLength = keyword.length();
+
+    for (int i = 0; i < inputLength; i++) {
+
+        if (keyCount % keyLength == 0) {
+            keyCount = 0;
+        }
+
+
+        if ((original[i] >= 'a' && original[i] <= 'z') || (original[i] >= 'A' && original[i] <= 'Z')) {
+
+            if (encrypt) {
+                int shiftBy = static_cast<int>(keyword[keyCount] - 'A');
+                finalWord += shiftAlphaCharacter(original[i],shiftBy);
+
             }
+
             else {
-                keyShift = keyChar - 'A';  // Calculate shift for uppercase
+                int shiftBys = static_cast<int>((keyword[keyCount] - 'A') * -1);
+                finalWord += shiftAlphaCharacter(original[i],shiftBys);
             }
-
-            if (!encrypt) {
-                keyShift = -keyShift;  // Reverse shift for decryption
-            }
-
-            newstr += shiftAlphaCharacter(currChar, keyShift);
-            keyIndex++;
+            keyCount +=1 ;
         }
         else {
-            newstr += currChar;  // Non-alphabet characters remain the same
+            finalWord  += original[i];
         }
     }
-    return newstr;
+    return finalWord;
 }
