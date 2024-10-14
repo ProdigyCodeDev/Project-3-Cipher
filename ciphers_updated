@@ -1,3 +1,30 @@
+/*
+ * ciphers.cpp
+ * Project UID e98fd45ccce9d7195e89e6171a5451f2
+ *
+ * <#Names#>
+ * <#Uniqnames#>
+ *
+ * EECS 183: Project 3
+ * Fall 2024
+ *
+ * <#description#>
+ */
+
+#include "utility.h"
+#include "caesar.h"
+#include "vigenere.h"
+#include "polybius.h"
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+//************************************************************************
+// Implement the functions below this line.
+//************************************************************************
+
+
 void ciphers() {
     string result;
     string userChoice;
@@ -7,42 +34,37 @@ void ciphers() {
 
     cout << "Choose a cipher (Caesar, Vigenere, or Polybius):" << endl;
     getline(cin, userChoice);
-    
-    // Convert the userChoice to lowercase
-    for (int l = 0; l < userChoice.length(); l++) {
+
+    int choicelength = userChoice.length();
+    for (int l = 0; l < choicelength; l++) {
         userChoice[l] = tolower(userChoice[l]);
     }
-    
-    // Check if the user choice is valid
+
     if (!(userChoice == "c" || userChoice == "v" || userChoice == "p" ||
           userChoice == "caesar" || userChoice == "vigenere" || userChoice == "polybius")) {
         cout << "Invalid cipher!" << endl;
         return;
     }
 
-    // Caesar Cipher
     if (userChoice == "c" || userChoice == "caesar") {
         int inputkey;
         cout << "Encrypt or decrypt:" << endl;
         getline(cin, codeaction);
 
-       
-        for (int m = 0; m < codeaction.length(); m++) {
+        int delength = codeaction.length();
+        for (int m = 0; m < delength; m++) {
             codeaction[m] = tolower(codeaction[m]);
         }
 
-       
         if (!(codeaction == "e" || codeaction == "d" || codeaction == "encrypt" || codeaction == "decrypt")) {
             cout << "Invalid mode!" << endl;
             return;
         }
-        
-       
+
         cout << "Enter a message:" << endl;
         getline(cin, inputmessage);
 
-       
-        cout << "What is your key:" << endl;
+        cout << "What is your key (integer):" << endl;
         cin >> inputkey;
 
         if (codeaction == "e" || codeaction == "encrypt") {
@@ -54,49 +76,39 @@ void ciphers() {
         }
     }
 
-    // Vigenere Cipher
     else if (userChoice == "v" || userChoice == "vigenere") {
         cout << "Encrypt or decrypt:" << endl;
         getline(cin, codeaction);
 
-      
-        for (int m = 0; m < codeaction.length(); m++) {
+        int delength = codeaction.length();
+        for (int m = 0; m < delength; m++) {
             codeaction[m] = tolower(codeaction[m]);
         }
 
-       
         if (!(codeaction == "e" || codeaction == "d" || codeaction == "encrypt" || codeaction == "decrypt")) {
             cout << "Invalid mode!" << endl;
             return;
         }
 
-     
         cout << "Enter a message:" << endl;
         getline(cin, inputmessage);
 
-       
         cout << "What is your key:" << endl;
         getline(cin, inputkey);
 
-        // Use toUpperCase to convert the key to uppercase
-        inputkey = toUpperCase(removeNonAlphas(inputkey));
-
-       
-        bool hasAlpha = false;
-        for (int i = 0; i < inputkey.length(); i++) {
-            if (isalpha(inputkey[i])) {
-                hasAlpha = true;
-                break;
+        bool run = false;
+        int inputkeylength = inputkey.length();
+        for (int x = 0; x < inputkeylength; x++) {
+            if (isalpha(inputkey[x])) {
+                run = true;
             }
         }
 
-        
-        if (!hasAlpha) {
+        if (!run) {
             cout << "Invalid key!" << endl;
             return;
         }
 
-      
         if (codeaction == "e" || codeaction == "encrypt") {
             result = vigenereCipher(inputmessage, inputkey, true);
             cout << "The encrypted message is: " << result << endl;
@@ -106,55 +118,43 @@ void ciphers() {
         }
     }
 
-    // Polybius Cipher
     else if (userChoice == "p" || userChoice == "polybius") {
         cout << "Encrypt or decrypt:" << endl;
         getline(cin, codeaction);
 
-       
-        for (int m = 0; m < codeaction.length(); m++) {
+        int delength = codeaction.length();
+        for (int m = 0; m < delength; m++) {
             codeaction[m] = tolower(codeaction[m]);
         }
 
-    
         if (!(codeaction == "e" || codeaction == "d" || codeaction == "encrypt" || codeaction == "decrypt")) {
             cout << "Invalid mode!" << endl;
             return;
         }
 
-     
         cout << "Enter a message:" << endl;
         getline(cin, inputmessage);
 
- 
         cout << "What is your key:" << endl;
         getline(cin, inputkey);
 
-        
         inputkey = toUpperCase(removeNonAlphas(inputkey));
+        inputkey = removeDuplicate(inputkey);
 
-      
-        bool hasAlphaPolybius = false;
-        for (int i = 0; i < inputkey.length(); i++) {
+        bool hasAlpha = false;
+        int inputkeyLength = inputkey.length();
+        for (int i = 0; i < inputkeyLength; i++) {
             if (isalpha(inputkey[i])) {
-                hasAlphaPolybius = true;
-                break;
+                hasAlpha = true;
             }
         }
 
-       
-        if (!hasAlphaPolybius) {
+        if (!hasAlpha) {
             cout << "Invalid key!" << endl;
             return;
         }
 
-    
-        inputkey = removeDuplicate(inputkey);
-
-      
         char grid[SIZE][SIZE];
-
-       
         if (codeaction == "e" || codeaction == "encrypt") {
             result = polybiusSquare(grid, inputkey, inputmessage, true);
             cout << "The encrypted message is: " << result << endl;
