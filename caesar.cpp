@@ -2,13 +2,13 @@
  * caesar.cpp
  * Project UID e98fd45ccce9d7195e89e6171a5451f2
  *
- * <#Names#>
- * <#Uniqnames#>
+ * Jack Vegter, Chris Lee
+ * jvegter, chrislp
  *
  * EECS 183: Project 3
  * Fall 2024
  *
- * <#description#>
+ * In this project, we use ciphers to dabble in the field of cryptography
  */
 
 #include "caesar.h"
@@ -18,14 +18,7 @@
 //************************************************************************
 // Implement the functions below this line.
 //************************************************************************
-/*
- * Requires: c is an alphabetical character.
- * Modifies: Nothing.
- * Effects:  Returns c shifted by n characters.
- *           If c is lowercase, it will remain lowercase.
- *           If c is uppercase, it will remain uppercase.
- * Used in:  caesarCipher.
- */
+
 char shiftAlphaCharacter(char c, int n) {
     int inputChar = static_cast<int>(c);
     char shiftedChar;
@@ -87,3 +80,4 @@ string caesarCipher(string original, int key, bool encrypt) {
     return newstr;
 
 }
+
