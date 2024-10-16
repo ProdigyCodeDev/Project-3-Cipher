@@ -2,15 +2,32 @@
  * vigenere.cpp
  * Project UID e98fd45ccce9d7195e89e6171a5451f2
  *
- * <#Names#>
- * <#Uniqnames#>
+ * Jack Vegter, Chris Lee
+ * jvegter, chrislp
  *
  * EECS 183: Project 3
  * Fall 2024
  *
- * <#description#>
+ * In this project, we use ciphers to dabble in cryptography.
  */
 
+#include "utility.h"
+#include "caesar.h"
+#include "vigenere.h"
+#include <iostream>
+
+//************************************************************************
+// Implement the functions below this line.
+//************************************************************************
+
+
+/*
+ * Requires: keyword contains at least one alphabetical character.
+ * Modifies: Nothing.
+ * Effects:  If encrypt is true, returns original string encrypted with
+ *           Vigenere cipher using keyword. If encrypt is false, returns
+ *           original string decrypted with Vigenere cipher using keyword.
+ */
 #include "utility.h"
 #include "caesar.h"
 #include "vigenere.h"
@@ -55,3 +72,4 @@ string vigenereCipher(string original, string keyword, bool encrypt) {
     }
     return finalWord;
 }
+
