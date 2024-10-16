@@ -179,11 +179,5 @@ void ciphers() {
         }
     }
 }
-
-
-
-
-string polybiusSquare(char grid[SIZE][SIZE], string key,
-    string original, bool encrypt);
    
 
