@@ -2,19 +2,23 @@
  * utility.cpp
  * Project UID e98fd45ccce9d7195e89e6171a5451f2
  *
- * <#Names#>
- * <#Uniqnames#>
+ * Jack Vegter and Chris Lee
+ * jvegter
  *
  * EECS 183: Project 3
  * Fall 2024
  *
- * <#description#>
+ * In this project, we use ciphers to dabble in the field of cryptography
  */
 
 #include "utility.h"
 #include <iostream>
 #include <string>
 
+
+//************************************************************************
+// Implement the functions below this line.
+//************************************************************************
 
 string toUpperCase(string original) {
     string newString = "";
@@ -33,11 +37,15 @@ string toUpperCase(string original) {
 
 string removeNonAlphas(string original) {
     string newString = "";
+    int upperCaseA = 65;
+    int uppercaseZ = 90;
+    int lowerA = 97;
+    int lowerZ = 122;
     int length = original.length();
     for (int i = 0; i < length; i++) {
         char numChar;
         int charNum = static_cast<int>(original.at(i));
-        if ((charNum >= 65) && (charNum <= 90) || (charNum >= 97) && (charNum <= 122)) {
+        if ((charNum >= upperCaseA) && (charNum <= uppercaseZ) || (charNum >= lowerA) && (charNum <= lowerZ)) {
             numChar = static_cast<char>(charNum);
             newString += numChar;
         }
