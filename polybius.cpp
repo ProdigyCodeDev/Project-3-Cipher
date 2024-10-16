@@ -2,26 +2,28 @@
  * polybius.cpp
  * Project UID e98fd45ccce9d7195e89e6171a5451f2
  *
- * <#Names#>
- * <#Uniqnames#>
+ * Jack Vegter and Chris Lee
+ * jvegter, chrislp
  *
  * EECS 183: Project 3
  * Fall 2024
  *
- * <#description#>
+ * In this project, we use ciphers to dabble in the field of cryptography
  */
 
-#include <iostream>
+
 #include "polybius.h"
 #include <string>
-#include <algorithm>
-
 using namespace std;
+
+//************************************************************************
+// Implement the functions below this line.
+//************************************************************************
 
 
 string mixKey(string key) {
-    string result = key;             
-    string remaining = ALNUM;        
+    string result = key;
+    string remaining = ALNUM;
     int length = key.length();
     for (int i = 0; i < length; i++) {
         char c = key[i];
@@ -93,6 +95,7 @@ string polybiusSquare(char grid[SIZE][SIZE], string key, string original, bool e
             }
 
         }
-        return final_result;
+        
     }
+    return final_result;
 }
