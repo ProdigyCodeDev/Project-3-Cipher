@@ -1,3 +1,18 @@
+//
+//  test.cpp
+//  Project 3
+/* 
+ 
+ Jack Vegter, Chris Lee
+ jvegter, chrislp
+ 
+ Project 3
+ */
+//
+//  Created by Jack Vegter on 10/6/24.
+//
+
+
 #include "utility.h"
 #include "caesar.h"
 #include "vigenere.h"
@@ -35,15 +50,24 @@ void startTests() {
 }
 
 void testShiftAlphaCharacter() {
-    cout << "Now testing function ShiftAlphaCharacter()" << endl;
-    cout << "Expected: 'a', Actual: '" << shiftAlphaCharacter('a', 0) << "'" << endl;
-    cout << "Expected: 'b', Actual: '" << shiftAlphaCharacter('a', 1) << "'" << endl;
-    cout << "Expected: 'w', Actual: '" << shiftAlphaCharacter('y', 24) << "'" << endl;
-    cout << "Expected: 'w', Actual:'" << shiftAlphaCharacter('y', 48) << "'" << endl;
-    cout << shiftAlphaCharacter('a', 0) << endl;
-    cout << shiftAlphaCharacter('b', 2) << endl;
-    cout << shiftAlphaCharacter('X', 5) << endl;
-    cout << shiftAlphaCharacter('X', 50) << endl;
+    cout << "Now testing function ShiftAlphaCharacter()" <<
+    endl;
+    cout << "Expected: 'a', Actual: '" << shiftAlphaCharacter('a', 0) << "'" <<
+    endl;
+    cout << "Expected: 'b', Actual: '" << shiftAlphaCharacter('a', 1) << "'" <<
+    endl;
+    cout << "Expected: 'w', Actual: '" << shiftAlphaCharacter('y', 24) << "'" <<
+    endl;
+    cout << "Expected: 'w', Actual:'" << shiftAlphaCharacter('y', 48) << "'" <<
+    endl;
+    cout << shiftAlphaCharacter('a', 0) <<
+    endl;
+    cout << shiftAlphaCharacter('b', 2) <<
+    endl;
+    cout << shiftAlphaCharacter('X', 5) <<
+    endl;
+    cout << shiftAlphaCharacter('X', 50) <<
+    endl;
 
 
     return;
@@ -73,7 +97,7 @@ void testcharToInt() {
 
 void testremoveDuplicate() {
     cout << "Expected ABC, actual: " << removeDuplicate("AABBCC") << endl;
-    cout << "Expected ABC, actual: " << removeDuplicate("AABBCC88899999933355544") << endl;
+    cout << "Expected ABC, actual: " << removeDuplicate("AABBCC88899999933355544")<< endl;
     cout << "Expected ABC, actual: " << removeDuplicate("001122334455667788899999933355544") << endl;
 
 
@@ -98,7 +122,8 @@ void testcaesarCipher() {
 }
 
 void testvigenereCipher() {
-    cout << "Expected:   Euyb dv ee lxy Lzrk ll 11 f.g.  , Actual " << vigenereCipher("Meet me at the Diag at 11 p.m.", "Squirrel!", true);
+    cout << "Expected:   Euyb dv ee lxy Lzrk ll 11 f.g.  , Actual " <<
+    vigenereCipher("Meet me at the Diag at 11 p.m.", "Squirrel!", true);
     cout << vigenereCipher("Euyb dv ee lxy Lzrk ll 11 f.g.", "Squirrel!", false);
     cout << endl;
 }
@@ -119,4 +144,3 @@ void testfindInGrid() {
 void testMixKey() {
     cout << mixKey("POLYBIUS") << endl;
 }
-
