@@ -22,23 +22,28 @@
 char shiftAlphaCharacter(char c, int n) {
     int inputChar = static_cast<int>(c);
     char shiftedChar;
-    while (!(n >= 0 && n < 26)) {
+    int num_letters_in_alphabet = 26;
+    int upperCaseA = 65;
+    int uppercaseZ = 90;
+    int lowerA = 97;
+    int lowerZ = 122;
+    while (!(n >= 0 && n < num_letters_in_alphabet)) {
         if (n < 0) {
-            n += 26;
+            n += num_letters_in_alphabet;
         }
         else {
-            n -= 26;
+            n -= num_letters_in_alphabet;
         }
     }
     
-    if ((inputChar >= 65) && (inputChar <= 90)) {
+    if ((inputChar >= upperCaseA) && (inputChar <= uppercaseZ)) {
         if (c + n > 'Z') {
             n = c + n - 'Z' - 1;
             c = 'A';
         }
     }
 
-    else if ((inputChar >= 97) && (inputChar <= 122)) {
+    else if ((inputChar >= lowerA) && (inputChar <= lowerZ)) {
         if (c + n > 'z') {
             n = c + n - 'z' - 1;
             c = 'a';
