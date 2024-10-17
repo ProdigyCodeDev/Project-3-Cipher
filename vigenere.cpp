@@ -11,23 +11,15 @@
  * In this project, we use ciphers to dabble in cryptography.
  */
 
-#include "utility.h"
-#include "caesar.h"
-#include "vigenere.h"
-#include <iostream>
+
 
 //************************************************************************
 // Implement the functions below this line.
 //************************************************************************
 
 
-/*
- * Requires: keyword contains at least one alphabetical character.
- * Modifies: Nothing.
- * Effects:  If encrypt is true, returns original string encrypted with
- *           Vigenere cipher using keyword. If encrypt is false, returns
- *           original string decrypted with Vigenere cipher using keyword.
- */
+
+ 
 #include "utility.h"
 #include "caesar.h"
 #include "vigenere.h"
@@ -72,4 +64,5 @@ string vigenereCipher(string original, string keyword, bool encrypt) {
     }
     return finalWord;
 }
+
 
